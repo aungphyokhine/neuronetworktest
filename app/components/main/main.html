@@ -1,11 +1,11 @@
 
 
-<div layout="row" layout-align="center center" flex style="min-height:100%;">
+<div layout="column" layout-align="center center" flex style="min-height:100%;">
 
     <md-input-container layout="column" layout-align="center center" ng-show="state==0">
         <h3>Choose one out of here.</h3>
         
-        <div layout="row">
+        <div layout-gt-md="row" layout="column">
             <div class="human boy" ng-click="selectperon(persons[0])">
                 
             </div>
@@ -54,12 +54,14 @@
       
         </div>
         </div>
-    <div layout="column">
-        <md-whiteframe ng-if="predicttype != null" ng-show="state==2" class="md-whiteframe-1dp" layout="column" style="margin: 1em; width:500px; height: 100%;padding:1em;">
-            <h3>Neural Network Says</h3>
-            <p  style="width:450px;margin-top:-10px;">
-                The neural network think "{{selectaction.desc}}" will be concerned with
-            </p>
+   
+        <md-whiteframe ng-if="predicttype != null" ng-show="state==2" class="md-whiteframe-1dp" layout="column" style="margin: 1em; width:500px;max-width:100%; height: 100%;">
+            <div style="margin:1em;">
+                <h3>Neural Network Says</h3>
+                <p style="max-width:100%;margin-top:-10px;">
+                    The neural network think "{{selectaction.desc}}" will be concerned with
+                </p>
+            </div>
             <div layout="row" layout-align="center center" style="margin-top:-10px;margin-bottom:10px;">
                 <div ng-if="predicttype == 0" class="human boy" >
 
@@ -74,24 +76,24 @@
                 <md-icon>close</md-icon>
             </md-button>
         </md-whiteframe>
-        <md-whiteframe ng-if="state==2" class="md-whiteframe-1dp" layout="column" style="margin: 1em; width:500px; height: 100%;padding:1em;">
+        <md-whiteframe ng-if="state==2" class="md-whiteframe-1dp" layout="column" style="margin: 1em; width:500px;max-width:100%; height: 100%;">
             
-            
-            <h3>Play Ground</h3>
-          
-            <p style="width:450px;margin-top:-10px;">
-                Choose one of the action, the system can guess what kind of person will love it. Can try again and again to make better results.
-            </p>
-            
-            <md-list flex="grow">
-                <md-list-item ng-repeat="action in actions" ng-click="predict(action)">
-                    <p> {{ action.desc }} </p>
-                    <!--<md-checkbox class="red" style="margin-right:-3px;" ng-model="action.checked"></md-checkbox>-->
-                </md-list-item>
+            <div style="margin:1em;">
+                <h3>Play Ground</h3>
 
-            </md-list>
-        </md-whiteframe>
-    </div>
+                <p style="max-width:100%;margin-top:-10px;">
+                    Choose one of the action, the system can guess what kind of person will love it. Can try again and again to make better results.
+                </p>
+</div>
+                <md-list flex="grow">
+                    <md-list-item ng-repeat="action in actions" ng-click="predict(action)">
+                        <p> {{ action.desc }} </p>
+                        <!--<md-checkbox class="red" style="margin-right:-3px;" ng-model="action.checked"></md-checkbox>-->
+                    </md-list-item>
+
+                </md-list>
+</md-whiteframe>
+    
        
 
 </div>
