@@ -1,0 +1,97 @@
+
+
+<div layout="row" layout-align="center center" flex style="min-height:100%;">
+
+    <md-input-container layout="column" layout-align="center center" ng-show="state==0">
+        <h3>Choose one out of here.</h3>
+        
+        <div layout="row">
+            <div class="human boy" ng-click="selectperon(persons[0])">
+                
+            </div>
+            <div class="human girl" ng-click="selectperon(persons[1])"></div>
+            <div class="human man" ng-click="selectperon(persons[2])"></div>
+            <div class="human woman" ng-click="selectperon(persons[3])"></div>
+        </div>
+        <p style="width:500px;margin-top:10px; text-align:center;">
+            The neuralwork has <b>{{trainingSet.length}}</b> inputs now.
+            You can give any number of input.But the more no of inputs make better results.
+            <br />
+            <div ng-if="trainingSet.length > 0" style="text-align:center;">
+                If you want to give more inputs please choose again.<br />
+                If you have no more input for neuron click the done button.
+            </div>
+        </p>
+    
+        <div style="position:fixed;right:10px;bottom:30px;">
+            
+       
+            <md-button ng-if="trainingSet.length > 0" ng-click="gototraining()" class="md-fab md-primary" aria-label="train">
+                <md-icon>done</md-icon>
+            </md-button>
+        </div>
+    </md-input-container>
+  
+
+   
+    <div layout="column" class="md-whiteframe-1dp" style="width:500px;max-width:100%;margin: 1em;" ng-if="state==1" >
+        <h3 flex style="margin: 1em;">
+           Choose appropriate actions for {{selectpeson.desc}}
+        </h3>
+       
+        <md-list flex="grow">
+             <md-list-item ng-repeat="action in actions">
+                <p> {{ action.desc }} </p>
+                <md-checkbox class="red" style="margin-right:-3px;" ng-model="action.checked"></md-checkbox>
+            </md-list-item>
+
+        </md-list>
+
+        <div style="position:fixed;right:10px;bottom:30px;">
+            <md-button ng-click="addinput()" class="md-fab md-primary"  aria-label="train">
+                <md-icon>add</md-icon>
+            </md-button>
+      
+        </div>
+        </div>
+    <div layout="column">
+        <md-whiteframe ng-if="predicttype != null" ng-show="state==2" class="md-whiteframe-1dp" layout="column" style="margin: 1em; width:500px; height: 100%;padding:1em;">
+            <h3>Neural Network Says</h3>
+            <p  style="width:450px;margin-top:-10px;">
+                The neural network think "{{selectaction.desc}}" will be concerned with
+            </p>
+            <div layout="row" layout-align="center center" style="margin-top:-10px;margin-bottom:10px;">
+                <div ng-if="predicttype == 0" class="human boy" >
+
+                </div>
+                <div ng-if="predicttype == 1" class="human girl" ></div>
+                <div ng-if="predicttype == 2" class="human man" ></div>
+                <div ng-if="predicttype == 3" class="human woman" ></div>
+            </div>
+        
+            
+            <md-button ng-click="restart()" class="md-fab md-primary" style="position:fixed;right:10px;bottom:30px;" aria-label="train">
+                <md-icon>close</md-icon>
+            </md-button>
+        </md-whiteframe>
+        <md-whiteframe ng-if="state==2" class="md-whiteframe-1dp" layout="column" style="margin: 1em; width:500px; height: 100%;padding:1em;">
+            
+            
+            <h3>Play Ground</h3>
+          
+            <p style="width:450px;margin-top:-10px;">
+                Choose one of the action, the system can guess what kind of person will love it. Can try again and again to make better results.
+            </p>
+            
+            <md-list flex="grow">
+                <md-list-item ng-repeat="action in actions" ng-click="predict(action)">
+                    <p> {{ action.desc }} </p>
+                    <!--<md-checkbox class="red" style="margin-right:-3px;" ng-model="action.checked"></md-checkbox>-->
+                </md-list-item>
+
+            </md-list>
+        </md-whiteframe>
+    </div>
+       
+
+</div>

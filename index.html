@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html ng-app="ngapp">
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Security-Policy">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/angular-material.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700">
+      <!--Synaptic-->
+     
+      <!--<script src="assets/lib/require.js"></script>-->
+
+      <script src="assets/lib/synaptic/dist/synaptic.js"></script>
+     
+      
+      
+    <!-- AngularJs -->
+    <script type="text/javascript" src="assets/lib/angular.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-aria.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="assets/lib/ngStorage.min.js"></script>
+
+    <!-- Angular Material -->
+    <script type="text/javascript" src="assets/lib/angular-material.min.js"></script>
+
+    <!-- Cordova -->
+    <script type="text/javascript" src="assets/lib/ng-cordova.min.js"></script>
+    <!--<script src="cordova.js"></script>-->
+      <!--FB-->
+      <script src="app/fbsdk.js"></script>
+      <!--Parse-->
+      <script src="app/parse.min.js"></script>
+    <!-- Modules -->
+    <script type="text/javascript" src="app/app.js"></script>
+
+    <!-- Routes -->
+    <script type="text/javascript" src="app/routes.js"></script>
+
+    <!-- Services -->
+    <script type="text/javascript" src="app/shared/shared-service.js"></script>
+
+    <!-- Controllers -->
+      <script type="text/javascript" src="app/components/app-controller.js"></script>
+    <script type="text/javascript" src="app/components/main/main-controller.js"></script>
+      <script type="text/javascript" src="app/components/stock/stock-controller.js"></script>
+    <title>NgApp</title>
+  </head>
+
+  <body  ng-cloak ng-controller="AppController">
+      <!--<md-toolbar flex>
+          <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+              <md-button class="md-icon-button" aria-label="Menu" ng-click="toggle()">
+                  <md-icon>menu</md-icon>
+              </md-button>
+              <p>{{ title }}</p>
+              <div style="width: 40px; height: 40px;"></div>
+          </div>
+      </md-toolbar>
+      <md-sidenav class="md-sidenav-left" md-component-id="left">
+          <md-toolbar>
+              <h1 class="md-toolbar-tools">SideNav Menu</h1>
+          </md-toolbar>
+          <md-list ng-cloak>
+              <md-list-item ng-href="#/stock">
+                  <md-icon style="padding-right: 16px; color: #000000">school</md-icon>
+                  <p>Material Design</p>
+              </md-list-item>
+              <md-list-item ng-href="https://material.angularjs.org/latest/">
+                  <md-icon style="padding-right: 16px; color: #000000">settings_ethernet</md-icon>
+                  <p>Angular Material</p>
+              </md-list-item>
+          </md-list>
+      </md-sidenav>-->
+    <ui-view></ui-view>
+
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<md-toolbar flex>
+    <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <md-button class="md-icon-button" aria-label="Menu" ng-click="main.toggle()">
+            <md-icon>menu</md-icon>
+        </md-button>
+        <p>{{ main.title }}</p>
+        <div style="width: 40px; height: 40px;"></div>
+    </div>
+</md-toolbar>
+<md-sidenav class="md-sidenav-left" md-component-id="left">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">SideNav Menu</h1>
+    </md-toolbar>
+    <md-list ng-cloak>
+        <md-list-item ng-href="#/main">
+            <md-icon style="padding-right: 16px; color: #000000">school</md-icon>
+            <p>Material Design</p>
+        </md-list-item>
+        <md-list-item ng-href="https://material.angularjs.org/latest/">
+            <md-icon style="padding-right: 16px; color: #000000">settings_ethernet</md-icon>
+            <p>Angular Material</p>
+        </md-list-item>
+    </md-list>
+</md-sidenav>
+<md-content  layout="row" layout-align="center center">
+    <div style="max-width:700px;width:100%;" layout-padding>
+        <a href="http://localhost:3000/auth/facebook" class="btn btn-primary">Login with Facebook</a>
+        <div ng-if="entry" class="md-block">
+            <form name="stockForm" ng-submit="add()">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+
+                        <md-card-title-text>
+                            <span class="md-headline">Stock Entry</span>
+                            <span class="md-subhead">You can add your stock here</span>
+
+
+                            <div>
+                                <div layout-gt-sm="row">
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+
+                                        <label>Enter your product name</label>
+                                        <input ng-model="stock.name" md-maxlength="30" required>
+                                        <div ng-messages="stockForm.name.$error">
+                                            <div ng-message="required">This is required.</div>
+                                            <div ng-message="md-maxlength">The name must be less than 30 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+
+                                    <!--<md-input-container class="md-block" flex-gt-sm>
+                                        <label>Long Last Name That Will Be Truncated And 3 Dots (Ellipsis) Will Appear At The End</label>
+                                        <input ng-model="theMax">
+                                    </md-input-container>-->
+                                </div>
+
+                                <md-input-container class="md-block">
+                                    <label>Product description</label>
+                                    <input ng-model="stock.description">
+
+                                </md-input-container>
+                                <md-input-container class="md-block">
+                                    <label>Product image URL</label>
+                                    <input ng-model="stock.imageurl">
+                                </md-input-container>
+
+                                <!--<md-input-container md-no-float class="md-block">
+                                    <input ng-model="user.address2" placeholder="Address 2">
+                                </md-input-container>-->
+
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Price amount</label>
+                                        <input ng-model="stock.amount" type="number" required>
+                                    </md-input-container>
+
+                                    <md-input-container flex-gt-sm>
+                                        <label>Currency</label>
+                                        <md-select ng-model="stock.currency" required>
+                                            <md-option ng-repeat="cur in currencies" value="{{cur.abbrev}}">
+                                                {{cur.abbrev}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <!--<label>Postal Code</label>
+                                        <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
+                                               required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+                                        <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                                            <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                                            <div ng-message="pattern" class="my-message">
+                                                That doesn't look like a valid postal
+                                                code.
+                                            </div>
+                                            <div ng-message="md-maxlength" class="my-message">
+                                                Don't use the long version silly...we don't need to be that specific...
+                                            </div>
+                                        </div>-->
+                                        <label>Quantity limit (Blank for no limit)</label>
+                                        <input ng-model="stock.qty" type="number">
+                                    </md-input-container>
+
+                                </div>
+
+                            </div>
+                        </md-card-title-text>
+
+
+
+
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button type="submit">Next</md-button>
+
+                    </md-card-actions>
+                </md-card>
+
+
+
+
+            </form>
+
+        </div>
+
+       
+      
+            <md-card layout-fill ng-if="!entry" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-media layout-padding>
+                        <div class="md-media-lg card-media"></div>
+                    </md-card-title-media>
+                    <md-card-title-text class="md-block" style="padding-left:30px;">
+                        <span class="md-headline">{{stock.name}}</span>
+
+                        <span class="md-subhead">{{stock.description}}</span>
+                        <span class="md-subhead">{{stock.currency}}{{stock.amount}}</span>
+                        <span class="md-subhead">{{stock.qty}}</span>
+
+                    </md-card-title-text>
+
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="back()">Back</md-button>
+                    <md-button ng-click="submit()">Submit</md-button>
+                   
+                </md-card-actions>
+            </md-card>
+     
+
+    </div>
+</md-content>
